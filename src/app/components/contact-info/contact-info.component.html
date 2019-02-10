@@ -1,0 +1,43 @@
+<form [formGroup]="contactForm" (ngSubmit)="storeData(contactForm.value)">
+  <div>
+    <label for="name">Name: </label>
+    <input name="name" formControlName="name" />
+    <p *ngIf="contactForm.get('name').errors && contactForm.get('name').dirty">
+      name required.
+    </p>
+  </div>
+  <div>
+    <label for="email">Email: </label>
+    <input name="email" formControlName="email" />
+    <p *ngIf="contactForm.get('email').errors && contactForm.get('email').dirty">
+      Incorrect email.
+    </p>
+  </div>
+  <div>
+    <label>Password: </label>
+    <input type="password" formControlName="password" />
+    <p *ngIf="contactForm.get('password').errors && contactForm.get('password').dirty">
+      password required.
+    </p>
+  </div>
+  <button type="submit" [disabled]="!contactForm.valid"> Submit</button>
+</form>
+
+<div *ngIf="contacts.length">
+  <h2>Contacts</h2>
+  <table>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Email
+      </th>
+    </tr>
+    <tr *ngFor="let contact of contacts">
+      <td>{{ contact['name'] }}</td>
+      <td> {{ contact['email'] }} </td>
+    </tr>
+
+  </table>
+</div>

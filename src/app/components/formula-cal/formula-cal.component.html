@@ -1,0 +1,8 @@
+<div>
+  Enter Formula : <input #formula />
+  <button (click)="calculate(formula.value)">Calculate</button>
+  <div>&nbsp;</div>
+  <div *ngIf="result.length">
+      Answer : {{ result }}
+  </div>
+</div>
